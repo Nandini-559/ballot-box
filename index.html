@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .thumb
+            {
+                display:inline-block;
+                margin-left: 20px;
+                height: 20px;
+                width: 45px;
+                border-radius: 30%;
+                background-image: linear-gradient(#272b44,#2e4c73);
+            }
+            .thumbdisable
+            {
+                display:inline-block;
+                margin-left: 20px;
+                height: 20px;
+                width: 45px;
+                border-radius: 30%;
+                background-color: #7d7c7d;
+            }
+            .party
+            {
+                background-image: linear-gradient(white,#c9fbfd);
+                border-radius:10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                color: brown;
+                font-family:  Roboto, arial, sans-serif;
+            }
+            #blank
+            {
+                height: 25px;
+            }
+            .button
+            {
+                border-left: 1px ridge yellow;
+                border-right: 1px ridge yellow;
+                border-bottom: 2px solid gray;
+                padding: 0px;
+            }
+            .click
+            {
+                color: #4d516d;
+            }
+            .leftarrow
+            {
+                float: left;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><div id="maindiv" style="background-color: #efefef; width: 70%; display:table-row; padding: 30px;">
+        <div id="ballot" style="height:400px; width:300px; padding-left: 10px; padding-right: 10px; padding-bottom: 30px; background-image: linear-gradient(#c1c4d7,#9098ad); display:table-cell; float: left; margin: 30px; border:1px solid black;">
+            <div>
+                <h5><i>Ballot Unit</i></h5>
+                <table>
+                    <tr>
+                        <td class="party"><b>Congress</b><img style="height: 25px; width: 25px;" src="congress.png"></td>
+                        <td class="button" style="border-top: 2px solid gray;"><button class="click" id="congress"><b class="leftarrow">&#8678;</b><div class="thumb"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party"><b>BJP</b><img style="height: 25px; width: 25px;" src="bjp.png"></td>
+                        <td class="button"><button class="click" id="bjp"><b class="leftarrow">&#8678;</b><div class="thumb"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party"><b>TDP</b><img style="height: 25px; width: 25px;" src="tdp.png"></td>
+                        <td class="button"><button class="click" id="tdp"><b class="leftarrow">&#8678;</b><div class="thumb"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party"><b>YSR Congress</b><img style="height: 25px; width: 25px;" src="ycp.png"></td>
+                        <td class="button"><button class="click" id="ycp"><b class="leftarrow">&#8678;</b><div class="thumb"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party"><b>Loksatha</b><img style="height: 25px; width: 25px;" src="loksatha.png"></td>
+                        <td class="button"><button class="click" id="loksatha"><b class="leftarrow">&#8678;</b><div class="thumb"></button></div></td>
+                    </tr>
+                    <tr>
+                        <td class="party"><b>CPM</b><img style="height: 25px; width: 25px;" src="cpm.png"></td>
+                        <td class="button"><button class="click" id="cpm"><b class="leftarrow">&#8678;</b><div class="thumb"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party"><b>TRS</b><img style="height: 25px; width: 25px;" src="trs.png"></td>
+                        <td class="button"><button class="click" id="trs"><b class="leftarrow">&#8678;</b><div class="thumb"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party"><b>PRP</b><img style="height: 25px; width: 25px;" src="prp.png"></td>
+                        <td class="button"><button class="click" id="prp"><b class="leftarrow">&#8678;</b><div class="thumb"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party" id="blank"></td>
+                        <td class="button"><button class="click" disabled="true"><b class="leftarrow">&#8678;</b><div class="thumbdisable"></div></button></td>
+                    </tr>
+                    <tr>
+                        <td class="party" id="blank"></td>
+                        <td class="button"><button class="click" disabled="true"><b class="leftarrow">&#8678;</b><div class="thumbdisable"></div></button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="display" style="background-image: linear-gradient(#c1c4d7,#9098ad); height:250px; width:200px; display: table-cell; float: right; padding: 20px;margin:30px; border:1px solid black;">
+           <div id="displayarea" style="background-color:black; border:2px ridge brown; border-radius: 5px; height:60px; width:200px;">
+            </div>
+            <button id="power" style="border-radius: 500%; background-color: green; height: 15px; margin-left:180px; margin-top: 10px;"></button><br>
+            <button id="off">&#x23fb;</button><br><br><br>
+            <button style="background-color: red; color: white; margin-right: 20px; padding: 10px; border:none; width: 70px;" id="reset"><b>Reset</b></button>
+            <button style="color: white; margin-left: 20px; padding: 10px; border: none; width:70px"><b>Count</b></button><br><br>
+            <button id="ok">&check;</button>
+            <button style="margin-right: 20px;" id="not">&#x274C;</button>
+            <button style="margin-left: 20px;" id="opennew">&check;</button>
+            <button id="closenew">&#x274C;</button><br><br>
+            <button style="margin-left: 100px;">&#8678;</button>
+            <button>&#8680;</button>
+        </div> 
+        </div>
+        </center>
+        <script type="text/javascript">
+            var congress=document.getElementById("congress");
+            congress.addEventListener("click",vote_for_congress);
+            var bjp=document.getElementById("bjp");
+            bjp.addEventListener("click",vote_for_bjp);
+            var tdp=document.getElementById("tdp");
+            tdp.addEventListener("click",vote_for_tdp);
+            var ycp=document.getElementById("ycp");
+            ycp.addEventListener("click",vote_for_ycp);
+            var loksatha=document.getElementById("loksatha");
+            loksatha.addEventListener("click",vote_for_loksatha);
+            var cpm=document.getElementById("cpm");
+            cpm.addEventListener("click",vote_for_cpm);
+            var trs=document.getElementById("trs");
+            trs.addEventListener("click",vote_for_trs);
+            var prp=document.getElementById("prp");
+            prp.addEventListener("click",vote_for_prp);
+            var congress_count=0;
+            var bjp_count=0;
+            var tdp_count=0;
+            var ycp_count=0;
+            var loksatha_count=0;
+            var cpm_count=0;
+            var trs_count=0;
+            var prp_count=0;
+            var precongress_count=0;
+            var prebjp_count=0;
+            var pretdp_count=0;
+            var preycp_count=0;
+            var preloksatha_count=0;
+            var precpm_count=0;
+            var pretrs_count=0;
+            var preprp_count=0;
+            function vote_for_congress() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                congress.style.display="none";
+                congress.childNodes[0].style.display="none";
+                congress.childNodes[1].style.display="none";
+                congress.parentElement.style.backgroundColor="white";
+                let congress_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="congress.png";
+                image.style.height="50px";
+                congress_symbol.appendChild(image);
+                congress_count++;
+            }
+            function vote_for_bjp() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                bjp.style.display="none";
+                bjp.childNodes[0].style.display="none";
+                bjp.childNodes[1].style.display="none";
+                bjp.parentElement.style.backgroundColor="white";
+                let bjp_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="bjp.png";
+                image.style.height="50px";
+                bjp_symbol.appendChild(image);
+                bjp_count++;
+            }
+            function vote_for_tdp() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                tdp.style.display="none";
+                tdp.childNodes[0].style.display="none";
+                tdp.childNodes[1].style.display="none";
+                tdp.parentElement.style.backgroundColor="white";
+                let tdp_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="tdp.png";
+                image.style.height="50px";
+                tdp_symbol.appendChild(image);
+                tdp_count++;
+            }
+            function vote_for_ycp() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                ycp.style.display="none";
+                ycp.childNodes[0].style.display="none";
+                ycp.childNodes[1].style.display="none";
+                ycp.parentElement.style.backgroundColor="white";
+                let ycp_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="ycp.png";
+                image.style.height="50px";
+                ycp_symbol.appendChild(image);
+                ycp_count++;
+            }
+            function vote_for_loksatha() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                loksatha.style.display="none";
+                loksatha.childNodes[0].style.display="none";
+                loksatha.childNodes[1].style.display="none";
+                loksatha.parentElement.style.backgroundColor="white";
+                let loksatha_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="loksatha.png";
+                image.style.height="50px";
+                loksatha_symbol.appendChild(image);
+                loksatha_count++;
+            }
+            function vote_for_cpm() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                cpm.style.display="none";
+                cpm.childNodes[0].style.display="none";
+                cpm.childNodes[1].style.display="none";
+                cpm.parentElement.style.backgroundColor="white";
+                let cpm_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="cpm.png";
+                image.style.height="50px";
+                cpm_symbol.appendChild(image);
+                cpm_count++;
+            }
+            function vote_for_trs() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                trs.style.display="none";
+                trs.childNodes[0].style.display="none";
+                trs.childNodes[1].style.display="none";
+                trs.parentElement.style.backgroundColor="white";
+                let trs_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="trs.png";
+                image.style.height="50px";
+                trs_symbol.appendChild(image);
+                trs_count++;
+            }
+            function vote_for_prp() 
+            {
+                congress.disabled="true";
+                bjp.disabled="true";
+                tdp.disabled="true";
+                ycp.disabled="true";
+                loksatha.disabled="true";
+                cpm.disabled="true";
+                trs.disabled="true";
+                prp.disabled="true";
+                prp.style.display="none";
+                prp.childNodes[0].style.display="none";
+                prp.childNodes[1].style.display="none";
+                prp.parentElement.style.backgroundColor="white";
+                let prp_symbol=document.getElementById("displayarea");
+                let image=document.createElement("img");
+                image.src="prp.png";
+                image.style.height="50px";
+                prp_symbol.appendChild(image);
+                prp_count++;
+            }
+            var ok=document.getElementById("ok");
+            ok.addEventListener("click",checked);
+            function checked()
+            {
+                congress.disabled="false";
+                bjp.disabled="false";
+                tdp.disabled="false";
+                ycp.disabled="false";
+                loksatha.disabled="false";
+                cpm.disabled="false";
+                trs.disabled="false";
+                prp.disabled="false";
+                if(precongress_count!=congress_count)
+                {
+                    precongress_count=congress_count;
+                    congress.style.display="block";
+                    congress.childNodes[0].style.display="none";
+                    congress.childNodes[1].style.display="none";
+                    congress.parentElement.style.backgroundColor="none";
+                }
+                else if(prebjp_count!=bjp_count)
+                {
+                    prebjp_count=bjp_count;
+                    bjp.style.display="none";
+                    bjp.childNodes[0].style.display="none";
+                    bjp.childNodes[1].style.display="none";
+                    bjp.parentElement.style.backgroundColor="white";
+                }
+                else if(pretdp_count!=tdp_count)
+                {
+                    pretdp_count=tdp_count;
+                    tdp.style.display="none";
+                    tdp.childNodes[0].style.display="none";
+                    tdp.childNodes[1].style.display="none";
+                    tdp.parentElement.style.backgroundColor="white";
+                }
+                else if(preycp_count!=ycp_count)
+                {
+                    preycp_count=ycp_count;
+                    ycp.style.display="none";
+                    ycp.childNodes[0].style.display="none";
+                    ycp.childNodes[1].style.display="none";
+                    ycp.parentElement.style.backgroundColor="white";
+                }
+                else if(preloksatha_count!=loksatha_count)
+                {
+                    preloksatha_count=loksatha_count;
+                    loksatha.style.display="none";
+                    loksatha.childNodes[0].style.display="none";
+                    loksatha.childNodes[1].style.display="none";
+                    loksatha.parentElement.style.backgroundColor="white";
+                }
+                else if(precpm_count!=cpm_count)
+                {
+                    precpm_count=cpm_count;
+                    cpm.style.display="none";
+                    cpm.childNodes[0].style.display="none";
+                    cpm.childNodes[1].style.display="none";
+                    cpm.parentElement.style.backgroundColor="white";
+                }
+                else if(pretrs_count!=trs_count)
+                {
+                    pretrs_count=trs_count;
+                    trs.style.display="none";
+                    trs.childNodes[0].style.display="none";
+                    trs.childNodes[1].style.display="none";
+                    trs.parentElement.style.backgroundColor="white";
+                }
+                else if(preprp_count!=prp_count)
+                {
+                    precpm_count=preprp_count;
+                    prp.style.display="none";
+                    prp.childNodes[0].style.display="none";
+                    prp.childNodes[1].style.display="none";
+                    prp.parentElement.style.backgroundColor="white";
+                }
+            }
+            var not_ok=document.getElementById("not");
+            not.addEventListener("click",canceled);
+            function canceled()
+            {
+                congress.disabled="false";
+                bjp.disabled="false";
+                tdp.disabled="false";
+                ycp.disabled="false";
+                loksatha.disabled="false";
+                cpm.disabled="false";
+                trs.disabled="false";
+                prp.disabled="false";
+                if(precongress_count!=congress_count)
+                {
+                    congress_count--;
+                }
+                else if(prebjp_count!=bjp_count)
+                {
+                    bjp_count--;
+                }
+                else if(pretdp_count!=tdp_count)
+                {
+                    tdp_count--;
+                }
+                else if(preycp_count!=ycp_count)
+                {
+                    ycp_count--;
+                }
+                else if(preloksatha_count!=loksatha_count)
+                {
+                    loksatha_count--;
+                }
+                else if(precpm_count!=cpm_count)
+                {
+                    cpm_count--;
+                }
+                else if(pretrs_count!=trs_count)
+                {
+                    trs_count--;
+                }
+                else if(preprp_count!=prp_count)
+                {
+                    preprp_count--;
+                }
+            }
+            var reset=document.getElementById("reset");
+            reset.addEventListener("click",reset);
+            function reset()
+            {
+                congress.disabled="false";
+                bjp.disabled="false";
+                tdp.disabled="false";
+                ycp.disabled="false";
+                loksatha.disabled="false";
+                cpm.disabled="false";
+                trs.disabled="false";
+                prp.disabled="false";
+                count=0;
+                console.log("votes-count : "+count);
+            }
+            var off=document.getElementById("off");
+            off.addEventListener("click",turnoff);
+            function turnoff()
+            {
+                let ballot=document.getElementById("ballot");
+                ballot.style.visibility="hidden";
+                let pow=document.getElementById("power");
+                pow.style.backgroundColor="red";
+            }
+            var opennew=document.getElementById("opennew");
+            opennew.addEventListener("click",new_window_open);
+            function new_window_open()
+            {
+                var win=window.open("votescount.html","newWindow","width=500,height=400");
+                win.document.getElementById("congress").innerHTML = congress;
+                win.document.getElementById("bjp").innerHTML = bjp_count;
+                win.document.getElementById("tdp").innerHTML = tdp_count;
+                win.document.getElementById("ycp").innerHTML = ycp_count;
+                win.document.getElementById("loksatha").innerHTML = loksatha_count;
+                win.document.getElementById("cpm").innerHTML = cpm_count;
+                win.document.getElementById("trs").innerHTML = trs_count;
+                win.document.getElementById("prp").innerHTML = prp_count;
+            }
+            var closenew=document.getElementById("closenew");
+            closenew.addEventListener("click",new_window_close);
+            function new_window_close()
+            {
+                win.close("votescount.html");
+            }
+        </script>
+    </body>
+</html>
